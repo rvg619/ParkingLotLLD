@@ -3,8 +3,12 @@ package ParkingLot.Model;
 public class Spot {
     boolean isOccupied;
     Vehicle vehicle;
+    SpotType spotType;
+    int spotId;
 
-    public Spot() {
+    public Spot(int spotId, SpotType spotType) {
+        this.spotId = spotId;
+        this.spotType = spotType;
         this.isOccupied = false;
         this.vehicle = null;
     }
@@ -33,5 +37,17 @@ public class Spot {
 
     public Vehicle getVehicle() {
         return vehicle;
+    }
+
+    public SpotType getSpotType() {
+        return spotType;
+    }
+
+    public int getSpotId() {
+        return spotId;
+    }
+
+    public boolean canFitVehicle(VehicleType vehicleType) {
+        return spotType.canFit(vehicleType);
     }
 }
